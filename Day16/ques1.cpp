@@ -1,25 +1,20 @@
-//Question1- Isomorphic strings
-//ques link-
-https://leetcode.com/problems/isomorphic-strings/description/
-
+//Question 1- Unique characters in a string
+//ques link-https://leetcode.com/problems/first-unique-character-in-a-string/description/
 class Solution {
     public:
-        bool isIsomorphic(string s, string t)
-         {
-            map<char,char> mp;
-            //check the length
-            if(s.length()!=t.length())return false;
-            else{
-                int size=s.length();
-                for(int i=0;i<size;i++){
-                    if(mp[s[i]]==NULL)
-                       mp.insert({s[i],t[i]});
-                    else if(mp[s[i]]!=t[i])return false;
-                    else continue;
-                    
-                }
+        int firstUniqChar(string s) {
+            map<int,int>mp;
+            
+            //map will store characters index as key and their frequecy as value
+            for(int i=0;i<s.length();i++){
+                ++mp[s[i]];
+                //inserting characters into map
                 
             }
-            return true;
+            for(int i=0;i<s.length();i++){
+                if(mp[s[i]]==1)return i;
+                
+            }
+            return -1;
         }
     };
